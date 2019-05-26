@@ -1,0 +1,38 @@
+{
+    "dev": {
+        "aws_region": "us-east-2",
+        "django_settings": "api.settings",
+        "profile_name": "default",
+        "project_name": "django-api-serv",
+        "runtime": "python3.7",
+        "s3_bucket": "test-api-dev2",
+        "apigateway_description": "Servless test API - DEV",
+        "lambda_description": "Servless test API - DEV",
+        "memory_size": 180,
+        "log_level": "DEBUG",
+        "cors": true,
+        "keep_warm": false,
+        "domain": "api-dev.seriallink.com.br",
+        "base_path": "api",
+        "endpoint_configuration": [
+          "REGIONAL"
+        ],
+        "route53_enabled": false
+    },
+    "production": {
+        "extends": "dev",
+        "environment_variables": {
+          "LOG_LEVEL": "INFO"
+        },
+        "lambda_description": "Servless test API - Prod",
+        "apigateway_description": "Servless test API - Prod",
+        "s3_bucket": "test-api-prod",
+        "domain": "api.seriallink.com.br",
+        "endpoint_configuration":[
+          "EDGE"
+        ],
+        "log_level": "INFO",
+        "keep_warm": true,
+        "keep_warm_expression": "rate(5 minutes)"
+    }
+}
